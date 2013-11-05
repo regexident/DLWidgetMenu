@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="cgD-v4-eWz">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Circular Menu View Controller - Circular-->
+        <scene sceneID="fv6-Bu-bpa">
+            <objects>
+                <viewController title="Circular" id="Ivh-9P-89q" customClass="DLWMCircularMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="egY-OL-BGV"/>
+                        <viewControllerLayoutGuide type="bottom" id="tjK-px-M7X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WsG-TN-7Ha">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Circular Layout" image="circular" id="i7i-vI-maw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKe-Ye-S8A" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="-235"/>
+        </scene>
+        <!--Linear Menu View Controller - Linear-->
+        <scene sceneID="Gu4-ls-Kae">
+            <objects>
+                <viewController title="Linear" id="b11-Bs-DCH" customClass="DLWMLinearMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zmG-8W-tIh"/>
+                        <viewControllerLayoutGuide type="bottom" id="aGD-lj-p5y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hYz-fZ-PlP">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Linear Layout" image="linear" id="A6I-LX-dKA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6z-L2-H4z" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="481"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="62c-Xu-6bc">
+            <objects>
+                <tabBarController id="cgD-v4-eWz" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="92q-cV-Mfo">
+                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ivh-9P-89q" kind="relationship" relationship="viewControllers" id="HiI-Oo-rjB"/>
+                        <segue destination="b11-Bs-DCH" kind="relationship" relationship="viewControllers" id="KIH-6v-qVf"/>
+                        <segue destination="lcb-Kt-tP5" kind="relationship" relationship="viewControllers" id="tD5-Jo-kJz"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASt-YM-4PB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-58" y="-235"/>
+        </scene>
+        <!--Arced Menu View Controller - Arced-->
+        <scene sceneID="hEO-Ch-dmN">
+            <objects>
+                <viewController title="Arced" id="lcb-Kt-tP5" customClass="DLWMArcedMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6m8-2Y-V4R"/>
+                        <viewControllerLayoutGuide type="bottom" id="EHw-1R-Qyc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="geD-rx-XVC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Arced Layout" image="arced" id="jvg-NB-Ttn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTK-TE-FZr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="-953"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arced" width="30" height="30"/>
+        <image name="circular" width="30" height="30"/>
+        <image name="linear" width="30" height="30"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
