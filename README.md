@@ -73,7 +73,8 @@ The reason for this is that **DLWidgetMenu** shrinks to just wrap its main item 
 
 Just copy the files in `"DLWidgetMenu/Classes/..."` into your project.
 
-<sup>(I don't use CocoaPod myself, but am very open for pull requests for a pod!)</sup>
+Alternatively you can install DLWidgetMenu into your project with [CocoaPods](http://beta.cocoapods.org/). Just add it to your Podfile:  
+`pod 'DLWidgetMenu'`
 
 ## Demos
 
