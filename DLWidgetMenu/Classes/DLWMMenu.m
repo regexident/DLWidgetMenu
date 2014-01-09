@@ -12,6 +12,8 @@
 #import "DLWMMenuAnimator.h"
 #import "DLWMSpringMenuAnimator.h"
 
+const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
+
 @interface DLWMMenu ()
 
 @property (readwrite, assign, nonatomic) CGPoint centerPointWhileOpen;
@@ -105,7 +107,10 @@
 	self.mainItem.layoutLocation = itemCenter;
 	self.centerPointWhileOpen = itemCenter;
 	for (DLWMMenuItem *item in self.items) {
-		item.layoutLocation = itemCenter;
+		CGPoint layoutLocation = item.layoutLocation;
+		if (CGPointEqualToPoint(layoutLocation, DLWMNullPoint)) {
+			item.layoutLocation = itemCenter;
+		}
 	}
 }
 
@@ -190,7 +195,7 @@
 			id object = [dataSource objectAtIndex:i inMenu:self];
 			UIView *contentView = [itemSource viewForObject:object atIndex:i inMenu:self];
 			DLWMMenuItem *item = [[DLWMMenuItem alloc] initWithContentView:contentView representedObject:object];
-			item.layoutLocation = self.centerPointWhileOpen;
+			item.layoutLocation = DLWMNullPoint;
 			[self addItem:item];
 		}
 	}
@@ -470,6 +475,17 @@
 }
 
 - (void)moveTo:(CGPoint)centerPoint animated:(BOOL)animated {
+	// Moving the items' layoutLocation so that layouts which
+	// rely on an item's previous location can be supported.
+	// A potential candidate would be a force-directed layout.
+	CGPoint currentCenter = ([self isClosed]) ? self.center : self.centerPointWhileOpen;
+	CGPoint delta = CGPointMake(centerPoint.x - currentCenter.x, centerPoint.y - currentCenter.y);
+	for (DLWMMenuItem *item in self.items) {
+		CGPoint layoutLocation = item.layoutLocation;
+		layoutLocation.x += delta.x;
+		layoutLocation.y += delta.y;
+		item.layoutLocation = layoutLocation;
+	}
 	NSTimeInterval duration = (animated) ? 0.5 : 0.0;
 	[UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		if ([self isClosed]) {

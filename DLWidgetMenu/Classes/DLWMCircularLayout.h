@@ -10,12 +10,19 @@
 
 #import "DLWMMenu.h"
 
-typedef CGFloat(^DLWMCircularLayoutRadiusLogic)(DLWMMenu *menu);
+typedef CGFloat(^DLWMLayoutRadiusLogic)(DLWMMenu *menu, CGFloat arc);
 
 @interface DLWMCircularLayout : NSObject <DLWMMenuLayout>
 
-@property (readwrite, copy, nonatomic) DLWMCircularLayoutRadiusLogic radiusLogic;
+@property (readwrite, assign, nonatomic) CGFloat angle;
+@property (readwrite, copy, nonatomic) DLWMLayoutRadiusLogic radiusLogic;
+@property (readwrite, assign, nonatomic, getter = isClockwise) BOOL clockwise;
 
-+ (DLWMCircularLayoutRadiusLogic)defaultRadiusLogic;
+- (id)init;
+- (id)initWithAngle:(CGFloat)angle;
+- (id)initWithAngle:(CGFloat)angle radius:(CGFloat)radius;
+- (id)initWithAngle:(CGFloat)angle radiusLogic:(DLWMLayoutRadiusLogic)radiusLogic;
+
++ (DLWMLayoutRadiusLogic)defaultRadiusLogic;
 
 @end

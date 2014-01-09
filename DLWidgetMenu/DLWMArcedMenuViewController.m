@@ -43,9 +43,7 @@
 	
 	self.view.backgroundColor = [UIColor darkGrayColor];
 	
-	DLWMArcuatedLayout *layout = [[DLWMArcuatedLayout alloc] init];
-	layout.angle = 0.0; // upwards
-	layout.arc = (M_PI / 4) * 3; // 90 degree
+	DLWMArcuatedLayout *layout = [[DLWMArcuatedLayout alloc] initWithAngle:0.0 arc:((M_PI / 4) * 3)];
 	
 	CGRect frame = self.view.bounds;
 	DLWMMenu *menu = [[DLWMMenu alloc] initWithMainItemView:[self viewForMainItemInMenu:nil]

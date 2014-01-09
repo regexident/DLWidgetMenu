@@ -6,23 +6,15 @@
 //  Copyright (c) 2013 Vincent Esche. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DLWMCircularLayout.h"
 
-#import "DLWMMenu.h"
-
-typedef CGFloat(^DLWMArcuatedLayoutRadiusLogic)(CGFloat arc, DLWMMenu *menu);
-
-@interface DLWMArcuatedLayout : NSObject <DLWMMenuLayout>
+@interface DLWMArcuatedLayout : DLWMCircularLayout
 
 @property (readwrite, assign, nonatomic) CGFloat angle;
 @property (readwrite, assign, nonatomic) CGFloat arc;
-@property (readwrite, copy, nonatomic) DLWMArcuatedLayoutRadiusLogic radiusLogic;
 
-- (id)init;
 - (id)initWithAngle:(CGFloat)angle arc:(CGFloat)arc;
-
-+ (CGFloat)defaultAngle;
-+ (CGFloat)defaultArc;
-+ (DLWMArcuatedLayoutRadiusLogic)defaultRadiusLogic;
+- (id)initWithAngle:(CGFloat)angle arc:(CGFloat)arc radius:(CGFloat)radius;
+- (id)initWithAngle:(CGFloat)angle arc:(CGFloat)arc radiusLogic:(DLWMLayoutRadiusLogic)radiusLogic;
 
 @end

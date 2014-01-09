@@ -41,7 +41,7 @@
 - (void)layoutItem:(DLWMMenuItem *)item atIndex:(NSUInteger)index forCenterPoint:(CGPoint)centerPoint inMenu:(DLWMMenu *)menu {
 	CGFloat centerSpacing = self.centerSpacing;
 	CGFloat itemSpacing = self.itemSpacing;
-	CGFloat angle = self.angle - M_PI / 2;
+	CGFloat angle = self.angle - M_PI_2;
 	
 	CGFloat offset = centerSpacing + itemSpacing * index;
 	CGFloat x = centerPoint.x + (offset * cosf(angle));

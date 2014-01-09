@@ -43,7 +43,8 @@
 	
 	self.view.backgroundColor = [UIColor darkGrayColor];
 	
-	DLWMCircularLayout	*layout = [[DLWMCircularLayout alloc] init];
+	DLWMCircularLayout *layout = [[DLWMCircularLayout alloc] initWithAngle:0.0];
+	
 	CGRect frame = self.view.bounds;
 	
 	DLWMMenu *menu = [[DLWMMenu alloc] initWithMainItemView:[self viewForMainItemInMenu:nil]
