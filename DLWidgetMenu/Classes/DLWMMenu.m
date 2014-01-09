@@ -73,19 +73,15 @@
 		NSAssert(dataSource, @"Method argument 'dataSource' must not be nil.");
 		NSAssert(itemSource, @"Method argument 'itemSource' must not be nil.");
 		NSAssert(layout, @"Method argument 'layout' must not be nil.");
-		
-		self.mainItem = [[DLWMMenuItem alloc] initWithContentView:mainItemView representedObject:self.representedObject];
-		[self addSubview:self.mainItem];
-		
 		self.state = DLWMMenuStateClosed;
-		[self adjustGeometryForState:self.state];
-		
+		self.representedObject = representedObject;
+		self.centerPointWhileOpen = mainItemView.center;
+		self.mainItem = [[DLWMMenuItem alloc] initWithContentView:mainItemView representedObject:representedObject];
 		self.dataSource = dataSource;
 		self.itemSource = itemSource;
 		self.delegate = delegate;
 		self.itemDelegate = itemDelegate;
 		self.layout = layout;
-		self.representedObject = representedObject;
 		
 		[self reloadData];
 	}
@@ -93,20 +89,23 @@
 }
 
 - (void)adjustGeometryForState:(DLWMMenuState)state {
+	CGPoint itemCenter;
 	if (state == DLWMMenuStateClosed) {
 		CGRect itemBounds = self.mainItem.bounds;
-		CGPoint itemCenter = CGPointMake(CGRectGetMidX(itemBounds), CGRectGetMidY(itemBounds));
+		itemCenter = CGPointMake(CGRectGetMidX(itemBounds), CGRectGetMidY(itemBounds));
 		CGPoint menuCenter = self.mainItem.center;
-		self.mainItem.center = itemCenter;
-		self.centerPointWhileOpen = itemCenter;
 		self.bounds = itemBounds;
 		self.center = menuCenter;
 	} else {
 		CGRect menuFrame = self.superview.bounds;
-		CGPoint itemCenter = self.center;
-		self.mainItem.center = itemCenter;
-		self.centerPointWhileOpen = itemCenter;
+		itemCenter = self.center;
 		self.frame = menuFrame;
+	}
+	self.mainItem.center = itemCenter;
+	self.mainItem.layoutLocation = itemCenter;
+	self.centerPointWhileOpen = itemCenter;
+	for (DLWMMenuItem *item in self.items) {
+		item.layoutLocation = itemCenter;
 	}
 }
 
@@ -191,6 +190,7 @@
 			id object = [dataSource objectAtIndex:i inMenu:self];
 			UIView *contentView = [itemSource viewForObject:object atIndex:i inMenu:self];
 			DLWMMenuItem *item = [[DLWMMenuItem alloc] initWithContentView:contentView representedObject:object];
+			item.layoutLocation = self.centerPointWhileOpen;
 			[self addItem:item];
 		}
 	}
@@ -475,12 +475,12 @@
 		if ([self isClosed]) {
 			self.center = centerPoint;
 		} else {
-			NSArray *items = self.items;
-			[self.layout layoutItems:items forCenterPoint:centerPoint inMenu:self];
 			self.centerPointWhileOpen = centerPoint;
 			self.mainItem.center = centerPoint;
+			NSArray *items = self.items;
+			[self.layout layoutItems:items forCenterPoint:centerPoint inMenu:self];
 			[items enumerateObjectsUsingBlock:^(DLWMMenuItem *item, NSUInteger index, BOOL *stop) {
-				item.center = ([self isClosed]) ? self.centerPointWhileOpen : item.layoutLocation;
+				item.center = ([self isClosed]) ? centerPoint : item.layoutLocation;
 			}];
 		}
 	} completion:nil];

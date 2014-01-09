@@ -13,7 +13,7 @@
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		
+		self.layoutLocation = self.center;
 	}
 	return self;
 }
@@ -21,13 +21,13 @@
 - (id)initWithCoder:(NSCoder *)decoder {
 	self = [super initWithCoder:decoder];
 	if (self) {
-		
+		self.layoutLocation = self.center;
 	}
 	return self;
 }
 
 - (id)initWithContentView:(UIView *)contentView representedObject:(id)representedObject {
-	self = [self initWithFrame:contentView.bounds];
+	self = [self initWithFrame:contentView.frame];
 	if (self) {
 		self.contentView = contentView;
 		self.representedObject = representedObject;
