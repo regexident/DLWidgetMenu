@@ -1,26 +1,23 @@
 //
-//  DLWMCircularMenuViewController.m
+//  DLWMGenericMenuViewController.m
 //  DLWidgetMenu
 //
 //  Created by Vincent Esche on 05/11/13.
 //  Copyright (c) 2013 Vincent Esche. All rights reserved.
 //
 
-#import "DLWMCircularMenuViewController.h"
+#import "DLWMGenericMenuViewController.h"
 
 #import "DLWMMenu.h"
 #import "DLWMMenuAnimator.h"
 #import "DLWMSpringMenuAnimator.h"
 #import "DLWMSelectionMenuAnimator.h"
-#import "DLWMCircularLayout.h"
 
-@interface DLWMCircularMenuViewController () <DLWMMenuDataSource, DLWMMenuItemSource, DLWMMenuDelegate, DLWMMenuItemDelegate>
-
-@property (readwrite, strong, nonatomic) DLWMMenu *menu;
+@interface DLWMGenericMenuViewController () <DLWMMenuDataSource, DLWMMenuItemSource, DLWMMenuDelegate, DLWMMenuItemDelegate>
 
 @end
 
-@implementation DLWMCircularMenuViewController
+@implementation DLWMGenericMenuViewController
 
 - (id)initWithCoder:(NSCoder *)decoder {
 	self = [super initWithCoder:decoder];
@@ -41,9 +38,13 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
+	if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+		self.edgesForExtendedLayout = UIRectEdgeNone;
+	}
+	
 	self.view.backgroundColor = [UIColor darkGrayColor];
 	
-	DLWMCircularLayout *layout = [[DLWMCircularLayout alloc] initWithAngle:0.0];
+	id<DLWMMenuLayout> layout = [[self class] layout];
 	
 	CGRect frame = self.view.bounds;
 	
@@ -54,11 +55,21 @@
 											   itemDelegate:self
 													 layout:layout
 										  representedObject:self];
+	menu.openAnimationDelayBetweenItems = 0.01;
+	menu.closeAnimationDelayBetweenItems = 0.01;
 	
-	menu.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
+	menu.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMaxY(frame) * 0.66);
 	self.menu = menu;
 	
-	[self.view addSubview:self.menu];
+	[self.view insertSubview:self.menu atIndex:0];
+	
+	self.configurationView.backgroundColor = [UIColor clearColor];
+    
+    for (UIView *subview in self.configurationView.subviews) {
+        if ([subview isKindOfClass:[UILabel class]]) {
+            ((UILabel *)subview).textColor = [UIColor whiteColor];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,10 +89,20 @@
 	[self.menu closeAnimated:NO];
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+#pragma mark - DLWMMenuLayout
+
++ (id<DLWMMenuLayout>)layout {
+	return nil;
+}
+
 #pragma mark - DLWMMenuDataSource Protocol
 
 - (NSUInteger)numberOfObjectsInMenu:(DLWMMenu *)menu {
-	return 8;
+	return 50;
 }
 
 - (id)objectAtIndex:(NSUInteger)index inMenu:(DLWMMenu *)menu {
@@ -135,17 +156,25 @@
 #pragma mark - DLWMMenuItemDelegate Protocol
 
 - (void)willOpenItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)willCloseItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)didOpenItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration {
+	NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)didCloseItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration {
+	NSLog(@"%s", __FUNCTION__);
 }
 
 #pragma mark - DLWMMenuDelegate Protocol
 
 - (void)receivedSingleTap:(UITapGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 	if ([menu isClosedOrClosing]) {
 		[menu open];
 	} else if ([menu isOpenedOrOpening]) {
@@ -158,21 +187,21 @@
 }
 
 - (void)receivedDoubleTap:(UITapGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)receivedLongPress:(UILongPressGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)receivedPinch:(UIPinchGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)receivedPan:(UIPanGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 	if (item == menu.mainItem) {
-		[menu moveTo:[recognizer locationInView:menu.superview] animated:YES];
+		[menu moveTo:[recognizer locationInView:menu.superview] animated:NO];
 	}
 }
 
@@ -181,19 +210,19 @@
 }
 
 - (void)willOpenMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)didOpenMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)willCloseMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)didCloseMenu:(DLWMMenu *)menu {
-	// NSLog(@"%s", __FUNCTION__);
+	NSLog(@"%s", __FUNCTION__);
 }
 
 @end

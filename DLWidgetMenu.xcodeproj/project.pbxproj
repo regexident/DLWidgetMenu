@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2580FC4183AC2990034D430 /* DLWMArcedMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2580FC3183AC2990034D430 /* DLWMArcedMenuViewController.m */; };
 		C26DB4A818294C7900888F54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26DB4A718294C7900888F54 /* Foundation.framework */; };
 		C26DB4AA18294C7900888F54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26DB4A918294C7900888F54 /* CoreGraphics.framework */; };
 		C26DB4AC18294C7900888F54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26DB4AB18294C7900888F54 /* UIKit.framework */; };
@@ -15,8 +14,7 @@
 		C26DB4B418294C7900888F54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4B318294C7900888F54 /* main.m */; };
 		C26DB4B818294C7900888F54 /* DLWMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4B718294C7900888F54 /* DLWMAppDelegate.m */; };
 		C26DB4BB18294C7900888F54 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26DB4B918294C7900888F54 /* Main_iPhone.storyboard */; };
-		C26DB4BE18294C7900888F54 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26DB4BC18294C7900888F54 /* Main_iPad.storyboard */; };
-		C26DB4C118294C7900888F54 /* DLWMCircularMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4C018294C7900888F54 /* DLWMCircularMenuViewController.m */; };
+		C26DB4C118294C7900888F54 /* DLWMRadialMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4C018294C7900888F54 /* DLWMRadialMenuViewController.m */; };
 		C26DB4C418294C7900888F54 /* DLWMLinearMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4C318294C7900888F54 /* DLWMLinearMenuViewController.m */; };
 		C26DB4C618294C7900888F54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26DB4C518294C7900888F54 /* Images.xcassets */; };
 		C26DB4CD18294C7900888F54 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26DB4CC18294C7900888F54 /* XCTest.framework */; };
@@ -28,10 +26,12 @@
 		C26DB4EB18295D5500888F54 /* DLWMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4EA18295D5500888F54 /* DLWMMenuItem.m */; };
 		C26DB4EE1829838D00888F54 /* DLWMLinearLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4ED1829838D00888F54 /* DLWMLinearLayout.m */; };
 		C26DB4F118299B6400888F54 /* DLWMSpringMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4F018299B6400888F54 /* DLWMSpringMenuAnimator.m */; };
-		C26DB4F71829A1B100888F54 /* DLWMArcuatedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4F61829A1B100888F54 /* DLWMArcuatedLayout.m */; };
 		C26DB4FA1829B25100888F54 /* DLWMSelectionMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4F91829B25100888F54 /* DLWMSelectionMenuAnimator.m */; };
 		C26DB4FD1829BB6900888F54 /* DLWMMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB4FC1829BB6900888F54 /* DLWMMenuAnimator.m */; };
-		C26DB5011829D85A00888F54 /* DLWMCircularLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB5001829D85A00888F54 /* DLWMCircularLayout.m */; };
+		C26DB5011829D85A00888F54 /* DLWMRadialLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C26DB5001829D85A00888F54 /* DLWMRadialLayout.m */; };
+		C2E9564E187F062300F3D549 /* DLWMSpiralLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E9564D187F062300F3D549 /* DLWMSpiralLayout.m */; };
+		C2E95651187F3A9A00F3D549 /* DLWMGenericMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E95650187F3A9A00F3D549 /* DLWMGenericMenuViewController.m */; };
+		C2E95654187F40DD00F3D549 /* DLWMSpiralMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E95653187F40DD00F3D549 /* DLWMSpiralMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C2580FC2183AC2990034D430 /* DLWMArcedMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMArcedMenuViewController.h; sourceTree = "<group>"; };
-		C2580FC3183AC2990034D430 /* DLWMArcedMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMArcedMenuViewController.m; sourceTree = "<group>"; };
 		C26DB4A418294C7900888F54 /* DLWidgetMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLWidgetMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26DB4A718294C7900888F54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C26DB4A918294C7900888F54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,9 +56,8 @@
 		C26DB4B618294C7900888F54 /* DLWMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLWMAppDelegate.h; sourceTree = "<group>"; };
 		C26DB4B718294C7900888F54 /* DLWMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLWMAppDelegate.m; sourceTree = "<group>"; };
 		C26DB4BA18294C7900888F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		C26DB4BD18294C7900888F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		C26DB4BF18294C7900888F54 /* DLWMCircularMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLWMCircularMenuViewController.h; sourceTree = "<group>"; };
-		C26DB4C018294C7900888F54 /* DLWMCircularMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLWMCircularMenuViewController.m; sourceTree = "<group>"; };
+		C26DB4BF18294C7900888F54 /* DLWMRadialMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLWMRadialMenuViewController.h; sourceTree = "<group>"; };
+		C26DB4C018294C7900888F54 /* DLWMRadialMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLWMRadialMenuViewController.m; sourceTree = "<group>"; };
 		C26DB4C218294C7900888F54 /* DLWMLinearMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLWMLinearMenuViewController.h; sourceTree = "<group>"; };
 		C26DB4C318294C7900888F54 /* DLWMLinearMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLWMLinearMenuViewController.m; sourceTree = "<group>"; };
 		C26DB4C518294C7900888F54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -77,14 +74,18 @@
 		C26DB4ED1829838D00888F54 /* DLWMLinearLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMLinearLayout.m; sourceTree = "<group>"; };
 		C26DB4EF18299B6400888F54 /* DLWMSpringMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMSpringMenuAnimator.h; sourceTree = "<group>"; };
 		C26DB4F018299B6400888F54 /* DLWMSpringMenuAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMSpringMenuAnimator.m; sourceTree = "<group>"; };
-		C26DB4F51829A1B100888F54 /* DLWMArcuatedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMArcuatedLayout.h; sourceTree = "<group>"; };
-		C26DB4F61829A1B100888F54 /* DLWMArcuatedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMArcuatedLayout.m; sourceTree = "<group>"; };
 		C26DB4F81829B25100888F54 /* DLWMSelectionMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMSelectionMenuAnimator.h; sourceTree = "<group>"; };
 		C26DB4F91829B25100888F54 /* DLWMSelectionMenuAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMSelectionMenuAnimator.m; sourceTree = "<group>"; };
 		C26DB4FB1829BB6900888F54 /* DLWMMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMMenuAnimator.h; sourceTree = "<group>"; };
 		C26DB4FC1829BB6900888F54 /* DLWMMenuAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMMenuAnimator.m; sourceTree = "<group>"; };
-		C26DB4FF1829D85A00888F54 /* DLWMCircularLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMCircularLayout.h; sourceTree = "<group>"; };
-		C26DB5001829D85A00888F54 /* DLWMCircularLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMCircularLayout.m; sourceTree = "<group>"; };
+		C26DB4FF1829D85A00888F54 /* DLWMRadialLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMRadialLayout.h; sourceTree = "<group>"; };
+		C26DB5001829D85A00888F54 /* DLWMRadialLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMRadialLayout.m; sourceTree = "<group>"; };
+		C2E9564C187F062300F3D549 /* DLWMSpiralLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMSpiralLayout.h; sourceTree = "<group>"; };
+		C2E9564D187F062300F3D549 /* DLWMSpiralLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMSpiralLayout.m; sourceTree = "<group>"; };
+		C2E9564F187F3A9A00F3D549 /* DLWMGenericMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMGenericMenuViewController.h; sourceTree = "<group>"; };
+		C2E95650187F3A9A00F3D549 /* DLWMGenericMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMGenericMenuViewController.m; sourceTree = "<group>"; };
+		C2E95652187F40DD00F3D549 /* DLWMSpiralMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWMSpiralMenuViewController.h; sourceTree = "<group>"; };
+		C2E95653187F40DD00F3D549 /* DLWMSpiralMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWMSpiralMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,13 +149,14 @@
 				C26DB4B618294C7900888F54 /* DLWMAppDelegate.h */,
 				C26DB4B718294C7900888F54 /* DLWMAppDelegate.m */,
 				C26DB4B918294C7900888F54 /* Main_iPhone.storyboard */,
-				C26DB4BC18294C7900888F54 /* Main_iPad.storyboard */,
-				C2580FC2183AC2990034D430 /* DLWMArcedMenuViewController.h */,
-				C2580FC3183AC2990034D430 /* DLWMArcedMenuViewController.m */,
-				C26DB4BF18294C7900888F54 /* DLWMCircularMenuViewController.h */,
-				C26DB4C018294C7900888F54 /* DLWMCircularMenuViewController.m */,
+				C2E9564F187F3A9A00F3D549 /* DLWMGenericMenuViewController.h */,
+				C2E95650187F3A9A00F3D549 /* DLWMGenericMenuViewController.m */,
 				C26DB4C218294C7900888F54 /* DLWMLinearMenuViewController.h */,
 				C26DB4C318294C7900888F54 /* DLWMLinearMenuViewController.m */,
+				C26DB4BF18294C7900888F54 /* DLWMRadialMenuViewController.h */,
+				C26DB4C018294C7900888F54 /* DLWMRadialMenuViewController.m */,
+				C2E95652187F40DD00F3D549 /* DLWMSpiralMenuViewController.h */,
+				C2E95653187F40DD00F3D549 /* DLWMSpiralMenuViewController.m */,
 				C26DB4C518294C7900888F54 /* Images.xcassets */,
 				C26DB4AE18294C7900888F54 /* Supporting Files */,
 			);
@@ -199,10 +201,10 @@
 				C26DB4E718294D1C00888F54 /* DLWMMenu.m */,
 				C26DB4EC1829838D00888F54 /* DLWMLinearLayout.h */,
 				C26DB4ED1829838D00888F54 /* DLWMLinearLayout.m */,
-				C26DB4F51829A1B100888F54 /* DLWMArcuatedLayout.h */,
-				C26DB4F61829A1B100888F54 /* DLWMArcuatedLayout.m */,
-				C26DB4FF1829D85A00888F54 /* DLWMCircularLayout.h */,
-				C26DB5001829D85A00888F54 /* DLWMCircularLayout.m */,
+				C26DB4FF1829D85A00888F54 /* DLWMRadialLayout.h */,
+				C26DB5001829D85A00888F54 /* DLWMRadialLayout.m */,
+				C2E9564C187F062300F3D549 /* DLWMSpiralLayout.h */,
+				C2E9564D187F062300F3D549 /* DLWMSpiralLayout.m */,
 				C26DB4FB1829BB6900888F54 /* DLWMMenuAnimator.h */,
 				C26DB4FC1829BB6900888F54 /* DLWMMenuAnimator.m */,
 				C26DB4EF18299B6400888F54 /* DLWMSpringMenuAnimator.h */,
@@ -290,7 +292,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C26DB4BE18294C7900888F54 /* Main_iPad.storyboard in Resources */,
 				C26DB4C618294C7900888F54 /* Images.xcassets in Resources */,
 				C26DB4BB18294C7900888F54 /* Main_iPhone.storyboard in Resources */,
 				C26DB4B218294C7900888F54 /* InfoPlist.strings in Resources */,
@@ -312,18 +313,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2580FC4183AC2990034D430 /* DLWMArcedMenuViewController.m in Sources */,
+				C2E95651187F3A9A00F3D549 /* DLWMGenericMenuViewController.m in Sources */,
+				C2E95654187F40DD00F3D549 /* DLWMSpiralMenuViewController.m in Sources */,
 				C26DB4FD1829BB6900888F54 /* DLWMMenuAnimator.m in Sources */,
 				C26DB4C418294C7900888F54 /* DLWMLinearMenuViewController.m in Sources */,
-				C26DB4F71829A1B100888F54 /* DLWMArcuatedLayout.m in Sources */,
 				C26DB4FA1829B25100888F54 /* DLWMSelectionMenuAnimator.m in Sources */,
 				C26DB4F118299B6400888F54 /* DLWMSpringMenuAnimator.m in Sources */,
 				C26DB4EE1829838D00888F54 /* DLWMLinearLayout.m in Sources */,
-				C26DB4C118294C7900888F54 /* DLWMCircularMenuViewController.m in Sources */,
+				C26DB4C118294C7900888F54 /* DLWMRadialMenuViewController.m in Sources */,
+				C2E9564E187F062300F3D549 /* DLWMSpiralLayout.m in Sources */,
 				C26DB4B818294C7900888F54 /* DLWMAppDelegate.m in Sources */,
 				C26DB4EB18295D5500888F54 /* DLWMMenuItem.m in Sources */,
 				C26DB4E818294D1C00888F54 /* DLWMMenu.m in Sources */,
-				C26DB5011829D85A00888F54 /* DLWMCircularLayout.m in Sources */,
+				C26DB5011829D85A00888F54 /* DLWMRadialLayout.m in Sources */,
 				C26DB4B418294C7900888F54 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,14 +363,6 @@
 				C26DB4BA18294C7900888F54 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		C26DB4BC18294C7900888F54 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C26DB4BD18294C7900888F54 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		C26DB4D518294C7900888F54 /* InfoPlist.strings */ = {

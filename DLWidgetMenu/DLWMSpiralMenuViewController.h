@@ -1,5 +1,5 @@
 //
-//  DLWMLinearMenuViewController.h
+//  DLWMSpiralMenuViewController.h
 //  DLWidgetMenu
 //
 //  Created by Vincent Esche on 05/11/13.
@@ -8,6 +8,6 @@
 
 #import "DLWMGenericMenuViewController.h"
 
-@interface DLWMLinearMenuViewController : DLWMGenericMenuViewController
+@interface DLWMSpiralMenuViewController : DLWMGenericMenuViewController
 
 @end

@@ -33,21 +33,36 @@
 }
 
 - (void)layoutItems:(NSArray *)items forCenterPoint:(CGPoint)centerPoint inMenu:(DLWMMenu *)menu {
+	CGFloat centerSpacing = self.centerSpacing;
+	CGFloat itemSpacing = self.itemSpacing;
+	CGFloat angle = self.angle;
+	
 	[items enumerateObjectsUsingBlock:^(DLWMMenuItem *item, NSUInteger index, BOOL *stop) {
-		[self layoutItem:item atIndex:index forCenterPoint:centerPoint inMenu:menu];
+		CGFloat offset = centerSpacing + itemSpacing * index;
+		CGFloat x = centerPoint.x + (offset * cosf(angle));
+		CGFloat y = centerPoint.y + (offset * sinf(angle));
+		CGPoint itemCenter = CGPointMake(x, y);
+		item.layoutLocation = itemCenter;
 	}];
 }
 
-- (void)layoutItem:(DLWMMenuItem *)item atIndex:(NSUInteger)index forCenterPoint:(CGPoint)centerPoint inMenu:(DLWMMenu *)menu {
-	CGFloat centerSpacing = self.centerSpacing;
-	CGFloat itemSpacing = self.itemSpacing;
-	CGFloat angle = self.angle - M_PI_2;
-	
-	CGFloat offset = centerSpacing + itemSpacing * index;
-	CGFloat x = centerPoint.x + (offset * cosf(angle));
-	CGFloat y = centerPoint.y + (offset * sinf(angle));
-	CGPoint itemCenter = CGPointMake(x, y);
-	item.layoutLocation = itemCenter;
+- (void)setAngle:(CGFloat)angle {
+	_angle = angle;
+	[self announceChange];
+}
+
+- (void)setItemSpacing:(CGFloat)itemSpacing {
+	_itemSpacing = itemSpacing;
+	[self announceChange];
+}
+
+- (void)setCenterSpacing:(CGFloat)centerSpacing {
+	_centerSpacing = centerSpacing;
+	[self announceChange];
+}
+
+- (void)announceChange {
+	[[NSNotificationCenter defaultCenter] postNotificationName:DLWMMenuLayoutChangedNotification object:self];
 }
 
 @end

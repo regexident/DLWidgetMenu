@@ -1,91 +1,513 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="cgD-v4-eWz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5037.2" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="b1s-8m-mK1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Circular Menu View Controller - Circular-->
-        <scene sceneID="fv6-Bu-bpa">
+        <!--Radial Menu View Controller - Radial-->
+        <scene sceneID="m7H-3r-9ox">
             <objects>
-                <viewController title="Circular" id="Ivh-9P-89q" customClass="DLWMCircularMenuViewController" sceneMemberID="viewController">
+                <viewController title="Radial" id="kR6-xN-zlM" customClass="DLWMRadialMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="egY-OL-BGV"/>
-                        <viewControllerLayoutGuide type="bottom" id="tjK-px-M7X"/>
+                        <viewControllerLayoutGuide type="top" id="IrW-I0-EZi"/>
+                        <viewControllerLayoutGuide type="bottom" id="cFy-ys-D8Z"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WsG-TN-7Ha">
+                    <view key="view" contentMode="scaleToFill" id="xLz-Yo-GvS">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AO2-VV-0Mc">
+                                <rect key="frame" x="223" y="20" width="322" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="360º" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rX-Im-Xp1">
+                                        <rect key="frame" x="257" y="130" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Items:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBY-Wl-RIJ">
+                                        <rect key="frame" x="20" y="26" width="48" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="10" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="tQ6-N8-TUS">
+                                        <rect key="frame" x="98" y="55" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeRadius:" destination="kR6-xN-zlM" eventType="valueChanged" id="x96-u8-9ec"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaG-oX-xrD">
+                                        <rect key="frame" x="256" y="27" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6.2831854820251465" minValue="-6.2831854820251465" maxValue="6.2831854820251465" translatesAutoresizingMaskIntoConstraints="NO" id="kHs-oZ-Ztr">
+                                        <rect key="frame" x="98" y="90" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeArc:" destination="kR6-xN-zlM" eventType="valueChanged" id="Jv2-Gr-MW3"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="6.2831854820251465" translatesAutoresizingMaskIntoConstraints="NO" id="Aqr-06-aDt">
+                                        <rect key="frame" x="98" y="125" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeAngle:" destination="kR6-xN-zlM" eventType="valueChanged" id="skw-16-cKX"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzz-bZ-2oD">
+                                        <rect key="frame" x="21" y="96" width="31" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHd-ah-YZk">
+                                        <rect key="frame" x="20" y="61" width="58" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="lqh-dx-WXW">
+                                        <rect key="frame" x="98" y="20" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeItems:" destination="kR6-xN-zlM" eventType="valueChanged" id="Ctu-av-aaE"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENY-0T-spp">
+                                        <rect key="frame" x="256" y="61" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="360º" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwR-nq-jJR">
+                                        <rect key="frame" x="257" y="96" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Angle:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-LD-72F">
+                                        <rect key="frame" x="21" y="130" width="49" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="10" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="khJ-Ny-7Me">
+                                        <rect key="frame" x="98" y="160" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeMinDistance:" destination="kR6-xN-zlM" eventType="valueChanged" id="9Mk-sy-Xq9"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgY-xu-EoK">
+                                        <rect key="frame" x="20" y="165" width="72" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-Mf-4sl">
+                                        <rect key="frame" x="256" y="165" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Uniform Outer Layer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1w-rZ-c6c">
+                                        <rect key="frame" x="20" y="199" width="161" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frM-xJ-BjK">
+                                        <rect key="frame" x="252" y="194" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeUniformOuterLayer:" destination="kR6-xN-zlM" eventType="valueChanged" id="roJ-KB-FeU"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="322" id="FZB-Ry-719"/>
+                                    <constraint firstAttribute="height" constant="240" id="KEf-QW-b4Z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="AO2-VV-0Mc" secondAttribute="centerX" id="AJJ-Rk-SUu"/>
+                            <constraint firstItem="AO2-VV-0Mc" firstAttribute="top" secondItem="xLz-Yo-GvS" secondAttribute="top" constant="20" id="fDV-BF-iK5"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Circular Layout" image="circular" id="i7i-vI-maw"/>
+                    <tabBarItem key="tabBarItem" title="Radial" image="radial" id="pzy-8z-ido"/>
+                    <connections>
+                        <outlet property="angleLabel" destination="4rX-Im-Xp1" id="6a0-3n-4KH"/>
+                        <outlet property="angleSlider" destination="Aqr-06-aDt" id="Lnl-QV-twy"/>
+                        <outlet property="arcLabel" destination="SwR-nq-jJR" id="dXg-lO-qD5"/>
+                        <outlet property="arcSlider" destination="kHs-oZ-Ztr" id="1Qh-2G-5rF"/>
+                        <outlet property="configurationView" destination="AO2-VV-0Mc" id="DOV-23-D7p"/>
+                        <outlet property="itemsLabel" destination="AaG-oX-xrD" id="r2Y-HR-zY9"/>
+                        <outlet property="itemsSlider" destination="lqh-dx-WXW" id="YfY-c7-OaG"/>
+                        <outlet property="minDistanceLabel" destination="qFg-Mf-4sl" id="ITz-Wb-IPf"/>
+                        <outlet property="minDistanceSlider" destination="khJ-Ny-7Me" id="PcM-xY-wND"/>
+                        <outlet property="radiusLabel" destination="ENY-0T-spp" id="dZB-aX-79e"/>
+                        <outlet property="radiusSlider" destination="tQ6-N8-TUS" id="NYA-gw-YpA"/>
+                        <outlet property="uniformOuterLayerSwitch" destination="frM-xJ-BjK" id="Ef0-na-2JD"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EKe-Ye-S8A" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyC-Js-dfd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="-235"/>
+            <point key="canvasLocation" x="587" y="229"/>
         </scene>
         <!--Linear Menu View Controller - Linear-->
-        <scene sceneID="Gu4-ls-Kae">
+        <scene sceneID="6db-R2-6dY">
             <objects>
-                <viewController title="Linear" id="b11-Bs-DCH" customClass="DLWMLinearMenuViewController" sceneMemberID="viewController">
+                <viewController title="Linear" id="ytx-nP-Dif" customClass="DLWMLinearMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zmG-8W-tIh"/>
-                        <viewControllerLayoutGuide type="bottom" id="aGD-lj-p5y"/>
+                        <viewControllerLayoutGuide type="top" id="XKA-gx-7LD"/>
+                        <viewControllerLayoutGuide type="bottom" id="FwB-ol-FlZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hYz-fZ-PlP">
+                    <view key="view" contentMode="scaleToFill" id="AYt-Px-uVj">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVf-8x-zKL">
+                                <rect key="frame" x="223" y="20" width="322" height="178"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="360º" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dQ-IP-Zg1">
+                                        <rect key="frame" x="257" y="130" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Items:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-oN-sSH">
+                                        <rect key="frame" x="20" y="26" width="48" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" minValue="10" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="l4U-2I-Sgm">
+                                        <rect key="frame" x="94" y="55" width="157" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeItemSpacing:" destination="ytx-nP-Dif" eventType="valueChanged" id="h7G-lK-xGm"/>
+                                            <action selector="changeRadius:" destination="kR6-xN-zlM" eventType="valueChanged" id="B5n-2c-Ar9"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IID-DA-HSu">
+                                        <rect key="frame" x="257" y="27" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="10" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="a04-Fx-62f">
+                                        <rect key="frame" x="94" y="90" width="157" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeArc:" destination="kR6-xN-zlM" eventType="valueChanged" id="LmJ-2U-xy6"/>
+                                            <action selector="changeCenterSpacing:" destination="ytx-nP-Dif" eventType="valueChanged" id="dqN-sU-20b"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="6.2831854820251465" translatesAutoresizingMaskIntoConstraints="NO" id="6jj-Yi-1U1">
+                                        <rect key="frame" x="94" y="125" width="157" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeAngle:" destination="kR6-xN-zlM" eventType="valueChanged" id="8zT-Mb-4qk"/>
+                                            <action selector="changeAngle:" destination="ytx-nP-Dif" eventType="valueChanged" id="xb4-Uc-gdt"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Center:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLo-JX-aHQ">
+                                        <rect key="frame" x="21" y="96" width="57" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spacing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxa-Ai-4Pn">
+                                        <rect key="frame" x="20" y="61" width="68" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="aDT-EL-ypp">
+                                        <rect key="frame" x="94" y="20" width="157" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeItems:" destination="ytx-nP-Dif" eventType="valueChanged" id="5vW-HW-dee"/>
+                                            <action selector="changeItems:" destination="kR6-xN-zlM" eventType="valueChanged" id="dSc-8r-UG4"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Az-i7-Xmk">
+                                        <rect key="frame" x="257" y="61" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yel-fL-2Dv">
+                                        <rect key="frame" x="257" y="96" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Angle:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXd-5a-X8S">
+                                        <rect key="frame" x="21" y="130" width="49" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87566179040000003" green="0.8756355643" blue="0.87565040589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="178" id="Vh0-Ek-2fM"/>
+                                    <constraint firstAttribute="width" constant="322" id="rMH-DP-NGS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cVf-8x-zKL" firstAttribute="top" secondItem="AYt-Px-uVj" secondAttribute="top" constant="20" id="IXK-BI-0Yr"/>
+                            <constraint firstItem="cVf-8x-zKL" firstAttribute="centerX" secondItem="AYt-Px-uVj" secondAttribute="centerX" id="RF6-rX-Rmv"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Linear Layout" image="linear" id="A6I-LX-dKA"/>
+                    <tabBarItem key="tabBarItem" title="Linear" image="linear" id="rBz-Pu-AWH"/>
+                    <connections>
+                        <outlet property="angleLabel" destination="6dQ-IP-Zg1" id="JWg-uU-c13"/>
+                        <outlet property="angleSlider" destination="6jj-Yi-1U1" id="mcb-Ni-vo1"/>
+                        <outlet property="centerSpacingLabel" destination="yel-fL-2Dv" id="v0S-fW-l5H"/>
+                        <outlet property="centerSpacingSlider" destination="a04-Fx-62f" id="Ve6-nO-kVV"/>
+                        <outlet property="configurationView" destination="cVf-8x-zKL" id="g8e-kT-Qsq"/>
+                        <outlet property="itemSpacingLabel" destination="5Az-i7-Xmk" id="iHp-Cd-IjN"/>
+                        <outlet property="itemSpacingSlider" destination="l4U-2I-Sgm" id="BmG-rx-gO9"/>
+                        <outlet property="itemsLabel" destination="IID-DA-HSu" id="3I3-ai-d4j"/>
+                        <outlet property="itemsSlider" destination="aDT-EL-ypp" id="cP7-Z0-yHz"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J6z-L2-H4z" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GyZ-Md-SL0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="481"/>
+            <point key="canvasLocation" x="587" y="-887"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="62c-Xu-6bc">
+        <scene sceneID="6FG-rI-hv0">
             <objects>
-                <tabBarController id="cgD-v4-eWz" sceneMemberID="viewController">
+                <tabBarController id="b1s-8m-mK1" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="92q-cV-Mfo">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jJZ-BE-FcC">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ivh-9P-89q" kind="relationship" relationship="viewControllers" id="HiI-Oo-rjB"/>
-                        <segue destination="b11-Bs-DCH" kind="relationship" relationship="viewControllers" id="KIH-6v-qVf"/>
-                        <segue destination="lcb-Kt-tP5" kind="relationship" relationship="viewControllers" id="tD5-Jo-kJz"/>
+                        <segue destination="ytx-nP-Dif" kind="relationship" relationship="viewControllers" id="zxM-Fc-Lyb"/>
+                        <segue destination="kR6-xN-zlM" kind="relationship" relationship="viewControllers" id="W8x-yp-bKq"/>
+                        <segue destination="0Gg-bb-MIh" kind="relationship" relationship="viewControllers" id="dK1-on-Dvw"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ASt-YM-4PB" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayT-pc-pSF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58" y="-235"/>
+            <point key="canvasLocation" x="-638" y="229"/>
         </scene>
-        <!--Arced Menu View Controller - Arced-->
-        <scene sceneID="hEO-Ch-dmN">
+        <!--Spiral Menu View Controller - Spiral-->
+        <scene sceneID="6xf-Ah-U09">
             <objects>
-                <viewController title="Arced" id="lcb-Kt-tP5" customClass="DLWMArcedMenuViewController" sceneMemberID="viewController">
+                <viewController title="Spiral" id="0Gg-bb-MIh" customClass="DLWMSpiralMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6m8-2Y-V4R"/>
-                        <viewControllerLayoutGuide type="bottom" id="EHw-1R-Qyc"/>
+                        <viewControllerLayoutGuide type="top" id="K5J-y9-a48"/>
+                        <viewControllerLayoutGuide type="bottom" id="luO-bK-f9l"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="geD-rx-XVC">
+                    <view key="view" contentMode="scaleToFill" id="I28-9u-bia">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ne4-s1-ARf">
+                                <rect key="frame" x="224" y="20" width="322" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3o-Dh-7GT">
+                                        <rect key="frame" x="257" y="100" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Items:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evN-Fc-sO8">
+                                        <rect key="frame" x="20" y="24" width="48" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" minValue="10" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="zS3-G7-Cls">
+                                        <rect key="frame" x="98" y="134" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeItemDistance:" destination="0Gg-bb-MIh" eventType="valueChanged" id="te4-pE-1ML"/>
+                                            <action selector="changeItemSpacing:" destination="ytx-nP-Dif" eventType="valueChanged" id="HjB-7d-af6"/>
+                                            <action selector="changeRadius:" destination="kR6-xN-zlM" eventType="valueChanged" id="d8g-yT-lt9"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6V-5k-nk1">
+                                        <rect key="frame" x="257" y="24" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="Vjz-54-eBI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="6.2831854820251465" translatesAutoresizingMaskIntoConstraints="NO" id="2ub-yx-XqR">
+                                        <rect key="frame" x="98" y="58" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeAngle:" destination="0Gg-bb-MIh" eventType="valueChanged" id="ga4-7I-tyJ"/>
+                                            <action selector="changeArc:" destination="kR6-xN-zlM" eventType="valueChanged" id="2co-SJ-szi"/>
+                                            <action selector="changeCenterSpacing:" destination="ytx-nP-Dif" eventType="valueChanged" id="GiC-4x-8uf"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-p3-6gj">
+                                        <rect key="frame" x="98" y="96" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="149" id="8tn-rt-Viq"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="changeAngle:" destination="ytx-nP-Dif" eventType="valueChanged" id="8fe-rK-hd5"/>
+                                            <action selector="changeAngle:" destination="kR6-xN-zlM" eventType="valueChanged" id="vLs-oc-pc5"/>
+                                            <action selector="changeRadius:" destination="0Gg-bb-MIh" eventType="valueChanged" id="NbG-SS-8Oh"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Angle:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmQ-AW-BLE">
+                                        <rect key="frame" x="21" y="62" width="49" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlU-t6-bcC">
+                                        <rect key="frame" x="20" y="138" width="72" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="92D-g6-N3A">
+                                        <rect key="frame" x="98" y="20" width="153" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeItems:" destination="kR6-xN-zlM" eventType="valueChanged" id="KC8-cn-46U"/>
+                                            <action selector="changeItems:" destination="0Gg-bb-MIh" eventType="valueChanged" id="V4q-PJ-vpf"/>
+                                            <action selector="changeItems:" destination="ytx-nP-Dif" eventType="valueChanged" id="eXg-jl-gHg"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="45.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVs-fY-yKz">
+                                        <rect key="frame" x="257" y="138" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="360º" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-xe-8oT">
+                                        <rect key="frame" x="257" y="62" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICP-VV-ktN">
+                                        <rect key="frame" x="21" y="100" width="58" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87566179040000003" green="0.8756355643" blue="0.87565040589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ICP-VV-ktN" firstAttribute="leading" secondItem="ne4-s1-ARf" secondAttribute="leading" constant="21" id="5Ce-ps-bhb"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="leading" secondItem="WVs-fY-yKz" secondAttribute="leading" id="5Y1-tS-DYi"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="leading" secondItem="92D-g6-N3A" secondAttribute="leading" id="Bbp-Hw-dDq"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="top" secondItem="ne4-s1-ARf" secondAttribute="top" constant="27" id="CQZ-wq-Mja"/>
+                                    <constraint firstItem="ICP-VV-ktN" firstAttribute="baseline" secondItem="z3o-Dh-7GT" secondAttribute="baseline" id="DgU-Fk-T1L"/>
+                                    <constraint firstAttribute="width" constant="322" id="E6C-Xk-eah"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="trailing" secondItem="WVs-fY-yKz" secondAttribute="trailing" id="Fha-CC-O2M"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="trailing" secondItem="z3o-Dh-7GT" secondAttribute="trailing" id="IZI-Ck-C31"/>
+                                    <constraint firstItem="ICP-VV-ktN" firstAttribute="centerY" secondItem="dTq-p3-6gj" secondAttribute="centerY" id="JNa-lR-0Kz"/>
+                                    <constraint firstItem="AmQ-AW-BLE" firstAttribute="leading" secondItem="VlU-t6-bcC" secondAttribute="leading" constant="1" id="KV1-uG-unP"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="trailing" secondItem="zS3-G7-Cls" secondAttribute="trailing" id="Nd4-yN-H05"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="trailing" secondItem="2ub-yx-XqR" secondAttribute="trailing" id="Nk6-Ln-aHQ"/>
+                                    <constraint firstItem="WVs-fY-yKz" firstAttribute="baseline" secondItem="VlU-t6-bcC" secondAttribute="baseline" id="QPM-Ep-Evy"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="leading" secondItem="92D-g6-N3A" secondAttribute="trailing" constant="8" symbolic="YES" id="RnD-QU-qIz"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="top" secondItem="2ub-yx-XqR" secondAttribute="bottom" constant="8" id="Rsa-UR-aof"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="leading" secondItem="hWK-xe-8oT" secondAttribute="leading" id="UyE-1S-Zf6"/>
+                                    <constraint firstItem="z3o-Dh-7GT" firstAttribute="leading" secondItem="dTq-p3-6gj" secondAttribute="trailing" constant="8" symbolic="YES" id="Vy2-88-9QP"/>
+                                    <constraint firstAttribute="bottom" secondItem="ICP-VV-ktN" secondAttribute="bottom" constant="63" id="WAn-vt-7G9"/>
+                                    <constraint firstItem="hWK-xe-8oT" firstAttribute="top" secondItem="w6V-5k-nk1" secondAttribute="bottom" constant="16" id="XmH-dF-FD1"/>
+                                    <constraint firstItem="ICP-VV-ktN" firstAttribute="top" secondItem="AmQ-AW-BLE" secondAttribute="bottom" constant="15" id="aop-PF-Bjl"/>
+                                    <constraint firstItem="AmQ-AW-BLE" firstAttribute="leading" secondItem="evN-Fc-sO8" secondAttribute="leading" constant="1" id="eHb-uB-Tsb"/>
+                                    <constraint firstAttribute="height" constant="184" id="g6h-Lz-B3l"/>
+                                    <constraint firstItem="w6V-5k-nk1" firstAttribute="trailing" secondItem="hWK-xe-8oT" secondAttribute="trailing" id="i2m-Y0-1hc"/>
+                                    <constraint firstItem="VlU-t6-bcC" firstAttribute="top" secondItem="ICP-VV-ktN" secondAttribute="bottom" constant="19" id="iNC-Yn-wT0"/>
+                                    <constraint firstItem="zS3-G7-Cls" firstAttribute="top" secondItem="dTq-p3-6gj" secondAttribute="bottom" constant="8" id="iUf-60-k4J"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="leading" secondItem="zS3-G7-Cls" secondAttribute="leading" id="ihZ-3Z-S55"/>
+                                    <constraint firstItem="92D-g6-N3A" firstAttribute="top" secondItem="ne4-s1-ARf" secondAttribute="top" constant="20" symbolic="YES" id="kb9-om-8Uc"/>
+                                    <constraint firstItem="AmQ-AW-BLE" firstAttribute="top" secondItem="evN-Fc-sO8" secondAttribute="bottom" constant="17" id="oen-GJ-sDm"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="leading" secondItem="2ub-yx-XqR" secondAttribute="leading" id="ou7-0U-DVp"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="trailing" secondItem="92D-g6-N3A" secondAttribute="trailing" id="tVB-T3-CWP"/>
+                                    <constraint firstItem="AmQ-AW-BLE" firstAttribute="leading" secondItem="ICP-VV-ktN" secondAttribute="leading" id="vdZ-Na-kbj"/>
+                                    <constraint firstItem="dTq-p3-6gj" firstAttribute="leading" secondItem="ICP-VV-ktN" secondAttribute="trailing" constant="21" id="x1O-gG-GTu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ne4-s1-ARf" secondAttribute="centerX" constant="-1" id="BQG-Xv-WqK"/>
+                            <constraint firstItem="ne4-s1-ARf" firstAttribute="top" secondItem="K5J-y9-a48" secondAttribute="bottom" id="izv-4u-m44"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Arced Layout" image="arced" id="jvg-NB-Ttn"/>
+                    <tabBarItem key="tabBarItem" title="Spiral" image="spiral" id="ZjC-Q7-fcQ"/>
+                    <connections>
+                        <outlet property="angleLabel" destination="hWK-xe-8oT" id="MRM-tY-5Qz"/>
+                        <outlet property="angleSlider" destination="2ub-yx-XqR" id="gwa-dI-mkC"/>
+                        <outlet property="configurationView" destination="ne4-s1-ARf" id="283-8B-TOB"/>
+                        <outlet property="itemDistanceLabel" destination="WVs-fY-yKz" id="ASI-vK-Oyq"/>
+                        <outlet property="itemDistanceSlider" destination="zS3-G7-Cls" id="ebh-LZ-tdS"/>
+                        <outlet property="itemsLabel" destination="w6V-5k-nk1" id="VDk-QT-8At"/>
+                        <outlet property="itemsSlider" destination="92D-g6-N3A" id="vPc-x3-dJR"/>
+                        <outlet property="radiusLabel" destination="z3o-Dh-7GT" id="0pb-Nv-h0x"/>
+                        <outlet property="radiusSlider" destination="dTq-p3-6gj" id="uJY-Xm-v9d"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YTK-TE-FZr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WAF-zL-pCI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="-953"/>
+            <point key="canvasLocation" x="587" y="1362"/>
         </scene>
     </scenes>
     <resources>
-        <image name="arced" width="30" height="30"/>
-        <image name="circular" width="30" height="30"/>
         <image name="linear" width="30" height="30"/>
+        <image name="radial" width="30" height="30"/>
+        <image name="spiral" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

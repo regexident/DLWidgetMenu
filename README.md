@@ -9,7 +9,9 @@
 
 **DLWidgetMenu** comes with three built-in layouts:
 
-* `DLWMArcuatedLayout`* `DLWMCircularLayout`* `DLWMLinearLayout`**DLWidgetMenu** uses iOS7's **spring animations** (`DLWMSpringMenuAnimator`) by default, but can easily be provided with your own **custom animations** as well (by subclassing `DLWMMenuAnimator`).
+* `DLWMLinearLayout`
+* `DLWMRadialLayout`
+* `DLWMSpiralLayout`**DLWidgetMenu** uses iOS7's **spring animations** (`DLWMSpringMenuAnimator`) by default, but can easily be provided with your own **custom animations** as well (by subclassing `DLWMMenuAnimator`).
 **DLWidgetMenu** observes its menu items for these **gesture recognizer events**:
 
 * single tap

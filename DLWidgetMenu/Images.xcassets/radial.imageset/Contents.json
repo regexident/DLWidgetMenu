@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "circular.png"
+      "filename" : "radial.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "circular@2x.png"
+      "filename" : "radial@2x.png"
     }
   ],
   "info" : {

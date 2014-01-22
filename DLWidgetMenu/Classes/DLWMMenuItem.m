@@ -42,6 +42,10 @@
 	[self addSubview:contentView];
 }
 
+- (void)setLayoutLocation:(CGPoint)layoutLocation {
+	_layoutLocation = layoutLocation;
+}
+
 - (void)layoutSubviews {
 	self.contentView.frame = self.bounds;
 }

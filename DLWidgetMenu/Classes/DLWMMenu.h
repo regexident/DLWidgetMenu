@@ -10,6 +10,8 @@
 
 #import "DLWMMenuItem.h"
 
+extern const CGFloat DLWMFullCircle;
+
 @class DLWMMenuAnimator;
 
 @class DLWMMenu;
@@ -31,8 +33,11 @@
 
 @optional
 
-- (void)willOpenItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration;;
-- (void)willCloseItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration;;
+- (void)willOpenItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration;
+- (void)willCloseItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration;
+
+- (void)didOpenItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration;
+- (void)didCloseItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu withDuration:(NSTimeInterval)duration;
 
 @end
 
@@ -55,6 +60,8 @@
 - (void)didCloseMenu:(DLWMMenu *)menu;
 
 @end
+
+extern NSString * const DLWMMenuLayoutChangedNotification;
 
 @protocol DLWMMenuLayout <NSObject>
 

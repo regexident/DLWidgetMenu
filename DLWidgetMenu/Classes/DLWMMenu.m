@@ -12,7 +12,9 @@
 #import "DLWMMenuAnimator.h"
 #import "DLWMSpringMenuAnimator.h"
 
-const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
+const CGFloat DLWMFullCircle = M_PI * 2;
+
+NSString * const DLWMMenuLayoutChangedNotification = @"DLWMMenuLayoutChangedNotification";
 
 @interface DLWMMenu ()
 
@@ -91,27 +93,21 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 }
 
 - (void)adjustGeometryForState:(DLWMMenuState)state {
-	CGPoint itemCenter;
+	CGPoint itemLocation;
 	if (state == DLWMMenuStateClosed) {
 		CGRect itemBounds = self.mainItem.bounds;
-		itemCenter = CGPointMake(CGRectGetMidX(itemBounds), CGRectGetMidY(itemBounds));
+		itemLocation = CGPointMake(CGRectGetMidX(itemBounds), CGRectGetMidY(itemBounds));
 		CGPoint menuCenter = self.mainItem.center;
 		self.bounds = itemBounds;
 		self.center = menuCenter;
 	} else {
 		CGRect menuFrame = self.superview.bounds;
-		itemCenter = self.center;
+		itemLocation = self.center;
 		self.frame = menuFrame;
 	}
-	self.mainItem.center = itemCenter;
-	self.mainItem.layoutLocation = itemCenter;
-	self.centerPointWhileOpen = itemCenter;
-	for (DLWMMenuItem *item in self.items) {
-		CGPoint layoutLocation = item.layoutLocation;
-		if (CGPointEqualToPoint(layoutLocation, DLWMNullPoint)) {
-			item.layoutLocation = itemCenter;
-		}
-	}
+	self.mainItem.center = itemLocation;
+	self.mainItem.layoutLocation = itemLocation;
+	self.centerPointWhileOpen = itemLocation;
 }
 
 #pragma mark - Custom Accessors
@@ -141,6 +137,18 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 	[self reloadData];
 }
 
+- (void)setLayout:(id<DLWMMenuLayout>)layout {
+	NSAssert(layout, @"Method argument 'layout' must not be nil.");
+	if (_layout) {
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:DLWMMenuLayoutChangedNotification object:_layout];
+	}
+	_layout = layout;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(layoutDidChange:) name:DLWMMenuLayoutChangedNotification object:_layout];
+	[UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		[self layoutItemsWithCenter:self.centerPointWhileOpen animated:YES];
+	} completion:nil];
+}
+
 - (void)setEnabled:(BOOL)enabled {
 	[self setEnabled:enabled animated:YES];
 }
@@ -162,6 +170,12 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 - (void)setDebuggingEnabled:(BOOL)debuggingEnabled {
 	_debuggingEnabled = debuggingEnabled;
 	self.backgroundColor = (debuggingEnabled) ? [[UIColor redColor] colorWithAlphaComponent:0.5] : nil;
+}
+
+#pragma mark - Observing
+
+- (void)layoutDidChange:(NSNotification *)notification {
+	[self layoutItemsWithCenter:self.centerPointWhileOpen animated:YES];
 }
 
 #pragma mark - Reloading
@@ -195,10 +209,11 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 			id object = [dataSource objectAtIndex:i inMenu:self];
 			UIView *contentView = [itemSource viewForObject:object atIndex:i inMenu:self];
 			DLWMMenuItem *item = [[DLWMMenuItem alloc] initWithContentView:contentView representedObject:object];
-			item.layoutLocation = DLWMNullPoint;
+			item.layoutLocation = [self isClosed] ? self.center : self.centerPointWhileOpen;
 			[self addItem:item];
 		}
 	}
+	[self layoutItemsWithCenter:self.centerPointWhileOpen animated:YES];
 }
 
 #pragma mark - Opening/Closing
@@ -232,7 +247,11 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 			if ([self.itemDelegate respondsToSelector:@selector(willOpenItem:inMenu:withDuration:)]) {
 				[self.itemDelegate willOpenItem:item inMenu:self withDuration:animator.duration];
 			}
-			[animator animateItem:item atIndex:index inMenu:self animated:animated completion:nil];
+			[animator animateItem:item atIndex:index inMenu:self animated:animated completion:^(DLWMMenuItem *item, NSUInteger index, DLWMMenu *menu, BOOL finished) {
+                if ([self.itemDelegate respondsToSelector:@selector(didOpenItem:inMenu:withDuration:)]) {
+                    [self.itemDelegate didOpenItem:item inMenu:self withDuration:animator.duration];
+                }
+            }];
 		});
 	}];
 	self.timer = [NSTimer scheduledTimerWithTimeInterval:totalDuration
@@ -294,7 +313,11 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 			if ([self.itemDelegate respondsToSelector:@selector(willCloseItem:inMenu:withDuration:)]) {
 				[self.itemDelegate willCloseItem:item inMenu:self withDuration:itemAnimator.duration];
 			}
-			[itemAnimator animateItem:item atIndex:index inMenu:self animated:animated completion:nil];
+			[itemAnimator animateItem:item atIndex:index inMenu:self animated:animated completion:^(DLWMMenuItem *item, NSUInteger index, DLWMMenu *menu, BOOL finished) {
+                if ([self.itemDelegate respondsToSelector:@selector(didCloseItem:inMenu:withDuration:)]) {
+                    [self.itemDelegate didCloseItem:item inMenu:self withDuration:itemAnimator.duration];
+                }
+            }];
 		});
 	}];
 	self.timer = [NSTimer scheduledTimerWithTimeInterval:totalDuration
@@ -446,10 +469,17 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 
 - (void)addItem:(DLWMMenuItem *)item {
 	NSAssert(item, @"Method argument 'menuItem' must not be nil.");
-	[((NSMutableOrderedSet *)self.items) addObject:item];
+	[((NSMutableArray *)self.items) addObject:item];
 	[self addGestureRecognizersToMenuItem:item];
 	item.userInteractionEnabled = YES;
-	item.hidden = YES;
+	BOOL hidden = [self isClosed];
+	item.hidden = hidden;
+	if (!hidden) {
+		item.alpha = 0.0;
+		[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+			item.alpha = 1.0;
+		} completion:nil];
+	}
 	item.center = self.centerPointWhileOpen;
 	[self insertSubview:item belowSubview:self.mainItem];
 }
@@ -458,9 +488,8 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 	NSAssert(item, @"Method argument 'menuItem' must not be nil.");
 	NSAssert(item.superview == self, @"Method argument 'menuItem' must be member of menu.");
 	[item removeFromSuperview];
-	item.hidden = NO;
 	[self removeGestureRecognizersFromMenuItem:item];
-	[((NSMutableOrderedSet *)self.items) removeObject:item];
+	[((NSMutableArray *)self.items) removeObject:item];
 }
 
 - (void)removeLastItem {
@@ -478,28 +507,32 @@ const CGPoint DLWMNullPoint = (CGPoint){CGFLOAT_MAX, CGFLOAT_MAX};
 	// Moving the items' layoutLocation so that layouts which
 	// rely on an item's previous location can be supported.
 	// A potential candidate would be a force-directed layout.
-	CGPoint currentCenter = ([self isClosed]) ? self.center : self.centerPointWhileOpen;
-	CGPoint delta = CGPointMake(centerPoint.x - currentCenter.x, centerPoint.y - currentCenter.y);
-	for (DLWMMenuItem *item in self.items) {
-		CGPoint layoutLocation = item.layoutLocation;
-		layoutLocation.x += delta.x;
-		layoutLocation.y += delta.y;
-		item.layoutLocation = layoutLocation;
+	[self layoutItemsWithCenter:centerPoint animated:animated];
+    if ([self isClosed]) {
+        NSTimeInterval duration = (animated) ? 0.5 : 0.0;
+        [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.center = centerPoint;
+        } completion:nil];
+    } else {
+        self.centerPointWhileOpen = centerPoint;
+    }
+}
+
+- (void)layoutItemsWithCenter:(CGPoint)centerPoint animated:(BOOL)animated {
+	NSArray *items = self.items;
+	if (!items.count) {
+		return;
 	}
-	NSTimeInterval duration = (animated) ? 0.5 : 0.0;
-	[UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		if ([self isClosed]) {
-			self.center = centerPoint;
-		} else {
-			self.centerPointWhileOpen = centerPoint;
-			self.mainItem.center = centerPoint;
-			NSArray *items = self.items;
-			[self.layout layoutItems:items forCenterPoint:centerPoint inMenu:self];
-			[items enumerateObjectsUsingBlock:^(DLWMMenuItem *item, NSUInteger index, BOOL *stop) {
-				item.center = ([self isClosed]) ? centerPoint : item.layoutLocation;
-			}];
-		}
-	} completion:nil];
+	[self.layout layoutItems:items forCenterPoint:centerPoint inMenu:self];
+	if ([self isOpenedOrOpening]) {
+        NSTimeInterval duration = (animated) ? 0.5 : 0.0;
+		[UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.mainItem.center = centerPoint;
+            [items enumerateObjectsUsingBlock:^(DLWMMenuItem *item, NSUInteger index, BOOL *stop) {
+                item.center = item.layoutLocation;
+            }];
+        } completion:nil];
+	}
 }
 
 @end
