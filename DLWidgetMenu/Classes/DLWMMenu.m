@@ -88,6 +88,7 @@ NSString * const DLWMMenuLayoutChangedNotification = @"DLWMMenuLayoutChangedNoti
 		self.layout = layout;
 		
 		[self reloadData];
+        [self adjustGeometryForState:DLWMMenuStateClosed];
 	}
 	return self;
 }
