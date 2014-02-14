@@ -146,4 +146,6 @@ typedef NS_OPTIONS(NSUInteger, DLWMMenuState) {
 - (void)moveTo:(CGPoint)centerPoint;
 - (void)moveTo:(CGPoint)centerPoint animated:(BOOL)animated;
 
+- (NSUInteger)indexOfItem:(DLWMMenuItem *)item;
+
 @end

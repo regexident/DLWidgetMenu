@@ -536,4 +536,8 @@ NSString * const DLWMMenuLayoutChangedNotification = @"DLWMMenuLayoutChangedNoti
 	}
 }
 
+- (NSUInteger)indexOfItem:(DLWMMenuItem *)item {
+	return [self.items indexOfObjectIdenticalTo:item];
+}
+
 @end
