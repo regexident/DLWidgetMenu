@@ -175,6 +175,7 @@
 
 - (void)receivedSingleTap:(UITapGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
 	NSLog(@"%s", __FUNCTION__);
+	NSLog(@"recognizer: %@", recognizer);
 	if ([menu isClosedOrClosing]) {
 		[menu open];
 	} else if ([menu isOpenedOrOpening]) {
@@ -188,24 +189,29 @@
 
 - (void)receivedDoubleTap:(UITapGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
 	NSLog(@"%s", __FUNCTION__);
+	NSLog(@"recognizer: %@", recognizer);
 }
 
 - (void)receivedLongPress:(UILongPressGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
 	NSLog(@"%s", __FUNCTION__);
+	NSLog(@"recognizer: %@", recognizer);
 }
 
 - (void)receivedPinch:(UIPinchGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
 	NSLog(@"%s", __FUNCTION__);
+	NSLog(@"recognizer: %@", recognizer);
 }
 
 - (void)receivedPan:(UIPanGestureRecognizer *)recognizer onItem:(DLWMMenuItem *)item inMenu:(DLWMMenu *)menu {
 	NSLog(@"%s", __FUNCTION__);
+	NSLog(@"recognizer: %@", recognizer);
 	if (item == menu.mainItem) {
 		[menu moveTo:[recognizer locationInView:menu.superview] animated:NO];
 	}
 }
 
 - (void)receivedSingleTap:(UITapGestureRecognizer *)recognizer outsideOfMenu:(DLWMMenu *)menu {
+	NSLog(@"recognizer: %@", recognizer);
 	[menu close];
 }
 
