@@ -248,9 +248,9 @@ NSString * const DLWMMenuLayoutChangedNotification = @"DLWMMenuLayoutChangedNoti
 			if ([self.itemDelegate respondsToSelector:@selector(willOpenItem:inMenu:withDuration:)]) {
 				[self.itemDelegate willOpenItem:item inMenu:self withDuration:animator.duration];
 			}
-			[animator animateItem:item atIndex:index inMenu:self animated:animated completion:^(DLWMMenuItem *item, NSUInteger index, DLWMMenu *menu, BOOL finished) {
+			[animator animateItem:item atIndex:index inMenu:self animated:animated completion:^(DLWMMenuItem *menuItem, NSUInteger itemIndex, DLWMMenu *menu, BOOL finished) {
                 if ([self.itemDelegate respondsToSelector:@selector(didOpenItem:inMenu:withDuration:)]) {
-                    [self.itemDelegate didOpenItem:item inMenu:self withDuration:animator.duration];
+                    [self.itemDelegate didOpenItem:menuItem inMenu:self withDuration:animator.duration];
                 }
             }];
 		});
@@ -314,9 +314,9 @@ NSString * const DLWMMenuLayoutChangedNotification = @"DLWMMenuLayoutChangedNoti
 			if ([self.itemDelegate respondsToSelector:@selector(willCloseItem:inMenu:withDuration:)]) {
 				[self.itemDelegate willCloseItem:item inMenu:self withDuration:itemAnimator.duration];
 			}
-			[itemAnimator animateItem:item atIndex:index inMenu:self animated:animated completion:^(DLWMMenuItem *item, NSUInteger index, DLWMMenu *menu, BOOL finished) {
+			[itemAnimator animateItem:item atIndex:index inMenu:self animated:animated completion:^(DLWMMenuItem *menuItem, NSUInteger itemIndex, DLWMMenu *menu, BOOL finished) {
                 if ([self.itemDelegate respondsToSelector:@selector(didCloseItem:inMenu:withDuration:)]) {
-                    [self.itemDelegate didCloseItem:item inMenu:self withDuration:itemAnimator.duration];
+                    [self.itemDelegate didCloseItem:menuItem inMenu:self withDuration:itemAnimator.duration];
                 }
             }];
 		});
