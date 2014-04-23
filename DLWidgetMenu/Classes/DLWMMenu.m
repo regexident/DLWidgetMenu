@@ -54,7 +54,14 @@ NSString * const DLWMMenuLayoutChangedNotification = @"DLWMMenuLayoutChangedNoti
 	
 	self.enabled = YES;
 	
-	self.openAnimator = [[DLWMSpringMenuAnimator alloc] init];
+    DLWMMenuAnimator * openAnimator = nil;
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        openAnimator = [DLWMMenuAnimator new];
+    } else {
+        openAnimator = [DLWMSpringMenuAnimator new];
+    }
+
+	self.openAnimator = openAnimator;
 	self.closeAnimator = [[DLWMMenuAnimator alloc] init];
 	self.openAnimationDelayBetweenItems = 0.025;
 	self.closeAnimationDelayBetweenItems = 0.025;
