@@ -75,8 +75,8 @@ The reason for this is that **DLWidgetMenu** shrinks to just wrap its main item 
 
 Just copy the files in `"DLWidgetMenu/Classes/..."` into your project.
 
-Alternatively you can install DLWidgetMenu into your project with [CocoaPods](http://beta.cocoapods.org/). Just add it to your Podfile:  
-`pod 'DLWidgetMenu'`
+Alternatively you can install DLWidgetMenu into your project with [CocoaPods](http://cocoapods.org/).  
+Just add it to your Podfile: `pod 'DLWidgetMenu'`
 
 ## Demos
 
@@ -96,4 +96,4 @@ Vincent Esche ([@regexident](http://twitter.com/regexident))
 
 ## License
 
-**DLWidgetMenu** is available under a **modified BSD-3 clause license** with the **additional requirement of attribution**. (**DLWidgetMenu** further more includes code by InfinitApps LLC, licensed under the **MIT license**.) See the `LICENSE` file for more info.
+**DLWidgetMenu** is available under a **modified BSD-3 clause license** with the **additional requirement of attribution**. See the `LICENSE` file for more info.
