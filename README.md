@@ -1,4 +1,4 @@
-# DLWidgetMenu
+# DLWidgetMenu [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 **DLWidgetMenu** is a versatile solution for displaying widget menus and can easily be extended with custom layouts and/or animations.
 
@@ -11,7 +11,10 @@
 
 * `DLWMLinearLayout`
 * `DLWMRadialLayout`
-* `DLWMSpiralLayout`**DLWidgetMenu** uses iOS7's **spring animations** (`DLWMSpringMenuAnimator`) by default, but can easily be provided with your own **custom animations** as well (by subclassing `DLWMMenuAnimator`).
+* `DLWMSpiralLayout`
+
+**DLWidgetMenu** uses iOS7's **spring animations** (`DLWMSpringMenuAnimator`) by default, but can easily be provided with your own **custom animations** as well (by subclassing `DLWMMenuAnimator`).
+
 **DLWidgetMenu** observes its menu items for these **gesture recognizer events**:
 
 * single tap
